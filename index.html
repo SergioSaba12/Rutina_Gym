@@ -6,7 +6,7 @@
   <title>Rutina 5 Días – Ganar Masa Muscular</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-    body{background:#0f172a;color:#e5e7eb;line-height:1.5;padding:0;margin:0}
+    body{background:#0f172a;color:#e5e7eb;line-height:1.5}
 
     header{padding:2.5rem 1rem;text-align:center;background:linear-gradient(135deg,#1e293b,#020617);position:sticky;top:0;z-index:10}
     header h1{font-size:2rem;margin-bottom:.5rem;animation:fadeDown .6s ease}
@@ -15,7 +15,7 @@
     .cta{background:#22c55e;color:#022c22;padding:.7rem 1.4rem;border-radius:999px;font-weight:700;display:inline-block;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
     .cta:active{transform:scale(.96)}
 
-    section{padding:1rem;max-width:100%;margin:0 auto}
+    section{padding:1rem;max-width:1100px;margin:0 auto}
     h2{font-size:1.4rem;margin-bottom:1rem;text-align:center;animation:fadeIn .5s ease}
 
     .grid{display:flex;flex-direction:column;gap:.8rem}
@@ -26,7 +26,8 @@
     .day h3{font-size:1.05rem;color:#22c55e}
     .day p{font-size:.8rem;color:#cbd5f5;margin-bottom:.4rem}
 
-    .exercises{overflow:hidden;max-height:0;transition:max-height .35s ease, opacity .25s ease;opacity:0}
+    /* Acordeón */
+    .exercises{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease, opacity .25s ease}
     .exercises.open{opacity:1}
 
     .exercise{display:flex;justify-content:space-between;font-size:.85rem;padding:.4rem 0;gap:.75rem;animation:fadeIn .3s ease}
@@ -38,16 +39,26 @@
     body.gym header,
     body.gym footer{display:none}
 
-    body.gym section{padding:.4rem}
-    body.gym h2{display:none}
+    body.gym section{padding:.55rem;max-width:100%}
     body.gym .day p{display:none}
+
+    /* En modo gym: ocultamos títulos de sección para limpiar, PERO mantenemos el de progresión */
+    body.gym h2{display:none}
+    body.gym #progresion h2{display:block;text-align:left;font-size:1.05rem;margin:.3rem 0 .6rem}
+
+    /* En modo gym: dejamos todo abierto */
     body.gym .exercises{max-height:1000px;opacity:1}
 
     /* 🎨 ANIMACIONES */
     @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 
-    @media(min-width:768px){header h1{font-size:2.4rem}h2{font-size:1.9rem}.grid{flex-direction:row;flex-wrap:wrap}.day{flex:1 1 220px}}
+    @media(min-width:768px){
+      header h1{font-size:2.4rem}
+      h2{font-size:1.9rem}
+      .grid{flex-direction:row;flex-wrap:wrap}
+      .day{flex:1 1 220px}
+    }
   </style>
 </head>
 <body>
@@ -66,7 +77,7 @@
   <div class="grid">
 
     <div class="day" onclick="toggle('lunes')">
-      <h3>Lunes – Pecho & Espalda (ligero)</h3>
+      <h3>Lunes – Pecho &amp; Espalda (ligero)</h3>
       <p>Compatible con fútbol</p>
       <div id="lunes" class="exercises">
         <div class="exercise"><span>Press banca</span><span>3×8 · 30–35 kg</span></div>
@@ -90,7 +101,7 @@
     </div>
 
     <div class="day" onclick="toggle('miercoles')">
-      <h3>Miércoles – Pecho & Espalda (fuerte)</h3>
+      <h3>Miércoles – Pecho &amp; Espalda (fuerte)</h3>
       <p>Día principal de masa</p>
       <div id="miercoles" class="exercises">
         <div class="exercise"><span>Press banca</span><span>4×5–6 · 35–40 kg</span></div>
@@ -103,7 +114,7 @@
     </div>
 
     <div class="day" onclick="toggle('jueves')">
-      <h3>Jueves – Hombro & Brazos</h3>
+      <h3>Jueves – Hombro &amp; Brazos</h3>
       <p>Soporte y estética</p>
       <div id="jueves" class="exercises">
         <div class="exercise"><span>Press militar</span><span>4×6–8 · 20–25 kg</span></div>
@@ -134,10 +145,10 @@
 <section id="progresion">
   <h2>🧠 Cómo progresar (léelo una vez)</h2>
   <div class="day" style="cursor:default">
-    <div class="exercises" style="display:block">
+    <div id="progList" class="exercises open">
       <div class="exercise"><span>1️⃣ Elige bien el peso</span><span>Empieza en el mínimo del rango si dudas</span></div>
       <div class="exercise"><span>2️⃣ Prioriza repeticiones</span><span>Sube reps antes de subir kg</span></div>
-      <div class="exercise"><span>3️⃣ Cuándo subir peso</span><span>Al completar el máximo del rango en todas las series</span></div>
+      <div class="exercise"><span>3️⃣ Cuándo subir peso</span><span>Completa el máximo del rango en todas las series</span></div>
       <div class="exercise"><span>4️⃣ Cuánto subir</span><span>Barra +2–2,5 kg · Mancuerna +1–2 kg · Máquina +5 kg</span></div>
       <div class="exercise"><span>5️⃣ RIR</span><span>Termina con 1–2 reps en recámara</span></div>
       <div class="exercise"><span>6️⃣ Si te estancas</span><span>Mantén peso o baja 1 serie, no fuerces</span></div>
@@ -151,10 +162,20 @@
 </footer>
 
 <script>
+  // Abre el acordeón del bloque de progresión desde el inicio
+  window.addEventListener('DOMContentLoaded', () => {
+    const prog = document.getElementById('progList')
+    if (prog) {
+      prog.style.maxHeight = prog.scrollHeight + 'px'
+      prog.classList.add('open')
+    }
+  })
+
   function toggle(id){
     const el = document.getElementById(id)
-    const isOpen = el.classList.contains('open')
+    if(!el) return
 
+    const isOpen = el.classList.contains('open')
     if(isOpen){
       el.style.maxHeight = null
       el.classList.remove('open')
@@ -166,8 +187,11 @@
 
   function toggleGym(on){
     const body = document.body
+
     if(on){
       body.classList.add('gym')
+
+      // Botón flotante para volver
       if(!document.getElementById('exitGym')){
         const btn = document.createElement('button')
         btn.id = 'exitGym'
@@ -177,21 +201,37 @@
         btn.style.top = '10px'
         btn.style.left = '10px'
         btn.style.zIndex = '9999'
+        btn.style.background = '#38bdf8'
         btn.onclick = ()=>toggleGym(false)
         document.body.appendChild(btn)
       }
-      document.querySelectorAll('.exercises').forEach(e=>{
-        e.style.maxHeight='1000px'
+
+      // Abrir todos los días (solo rutina)
+      document.querySelectorAll('#rutina .exercises').forEach(e=>{
+        e.style.maxHeight = e.scrollHeight + 'px'
         e.classList.add('open')
       })
+
+      // Asegurar que progresión también se vea abierta
+      const prog = document.getElementById('progList')
+      if (prog) {
+        prog.style.maxHeight = prog.scrollHeight + 'px'
+        prog.classList.add('open')
+      }
+
+      window.scrollTo({top:0,behavior:'smooth'})
     } else {
       body.classList.remove('gym')
       const btn = document.getElementById('exitGym')
       if(btn) btn.remove()
       window.scrollTo({top:0,behavior:'smooth'})
     }
-  })
   }
+
+  // --- Mini "tests" manuales (abre consola) ---
+  // toggle('lunes') debería abrir/cerrar sin errores
+  // toggleGym(true) debería activar modo gym + botón Inicio
+  // toggleGym(false) debería volver a la vista normal
 </script>
 
 </body>
