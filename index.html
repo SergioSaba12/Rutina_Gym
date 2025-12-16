@@ -36,8 +36,7 @@
 
     /* 🎯 MODO GYM */
     body.gym header,
-    body.gym footer,
-    body.gym #progresion{display:none}
+    body.gym footer{display:none}
 
     body.gym section{padding:.4rem}
     body.gym h2{display:none}
@@ -58,7 +57,7 @@
   <p>Rutina completa con pesos y progresión para ganar masa muscular de forma sostenible.</p>
   <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
     <a href="#rutina" class="cta">Ver rutina</a>
-    <button class="cta" style="background:#38bdf8" onclick="toggleGym()">Modo Gym</button>
+    <button class="cta" style="background:#38bdf8" onclick="toggleGym(true)">Modo Gym</button>
   </div>
 </header>
 
@@ -165,12 +164,33 @@
     }
   }
 
-  function toggleGym(){
-    document.body.classList.toggle('gym')
-    document.querySelectorAll('.exercises').forEach(e=>{
-      e.style.maxHeight='1000px'
-      e.classList.add('open')
-    })
+  function toggleGym(on){
+    const body = document.body
+    if(on){
+      body.classList.add('gym')
+      if(!document.getElementById('exitGym')){
+        const btn = document.createElement('button')
+        btn.id = 'exitGym'
+        btn.innerText = '⬅️ Inicio'
+        btn.className = 'cta'
+        btn.style.position = 'fixed'
+        btn.style.top = '10px'
+        btn.style.left = '10px'
+        btn.style.zIndex = '9999'
+        btn.onclick = ()=>toggleGym(false)
+        document.body.appendChild(btn)
+      }
+      document.querySelectorAll('.exercises').forEach(e=>{
+        e.style.maxHeight='1000px'
+        e.classList.add('open')
+      })
+    } else {
+      body.classList.remove('gym')
+      const btn = document.getElementById('exitGym')
+      if(btn) btn.remove()
+      window.scrollTo({top:0,behavior:'smooth'})
+    }
+  })
   }
 </script>
 
