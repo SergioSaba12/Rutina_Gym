@@ -3,82 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rutina 5 Días – Ganar Masa Muscular</title>
+  <title>Sergio GYM · Rutina Profesional 5 Días</title>
+
+  <!-- Fuente profesional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-    body{background:#0f172a;color:#e5e7eb;line-height:1.5}
+    :root{
+      --bg:#0a0d14;
+      --panel:#111318;
+      --panel-2:#0d1117;
+      --accent:#e5e7eb;        /* blanco premium */
+      --accent-2:#9ca3af;      /* gris plata */
+      --gold:#c9a24d;          /* dorado suave */
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --border:#1f2933;
+    }
 
-    header{padding:2.5rem 1rem;text-align:center;background:linear-gradient(135deg,#1e293b,#020617);position:sticky;top:0;z-index:10}
-    header h1{font-size:2rem;margin-bottom:.5rem;animation:fadeDown .6s ease}
-    header p{font-size:.95rem;max-width:520px;margin:0 auto 1.2rem;color:#cbd5f5;animation:fadeDown .8s ease}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,sans-serif}
 
-    .cta{background:#22c55e;color:#022c22;padding:.7rem 1.4rem;border-radius:999px;font-weight:700;display:inline-block;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
-    .cta:active{transform:scale(.96)}
+    body{
+      background:radial-gradient(1200px 600px at 50% -200px,#141820 0%,#070a10 60%,#070a10 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
 
-    section{padding:1rem;max-width:1100px;margin:0 auto}
-    h2{font-size:1.4rem;margin-bottom:1rem;text-align:center;animation:fadeIn .5s ease}
+    /* ===== HEADER ===== */
+    header{
+      padding:3.2rem 1.2rem 2.6rem;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+    }
 
-    .grid{display:flex;flex-direction:column;gap:.8rem}
+    header h1{
+      font-size:2.6rem;
+      font-weight:800;
+      letter-spacing:-.02em;
+      margin-bottom:.6rem;
+    }
 
-    .day{background:#020617;border-radius:14px;padding:1rem;box-shadow:0 6px 16px rgba(0,0,0,.35);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
-    .day:active{transform:scale(.985)}
+    header h1 span{color:var(--gold)}
 
-    .day h3{font-size:1.05rem;color:#22c55e}
-    .day p{font-size:.8rem;color:#cbd5f5;margin-bottom:.4rem}
+    header p{
+      max-width:560px;
+      margin:0 auto 1.6rem;
+      color:var(--muted);
+      font-size:1rem;
+    }
 
-    /* Acordeón */
-    .exercises{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease, opacity .25s ease}
+    .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:.8rem 1.6rem;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#1f2937,#020617);
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.6);
+    }
+
+    .btn-secondary{
+      background:var(--panel);
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    .btn:active{transform:scale(.97)}
+
+    /* ===== SECTIONS ===== */
+    section{max-width:1200px;margin:0 auto;padding:1.2rem}
+
+    h2{
+      font-size:1.7rem;
+      margin:1.2rem 0 1rem;
+      font-weight:800;
+      letter-spacing:-.01em;
+    }
+
+    /* ===== GRID ===== */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1rem;
+    }
+
+    .day{
+      background:linear-gradient(180deg,#0f131a,#090c12);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:1.2rem 1.2rem 1rem;
+      box-shadow:0 26px 60px rgba(0,0,0,.55);
+      cursor:pointer;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .day:hover{box-shadow:0 32px 70px rgba(0,0,0,.55)}
+
+    .day-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem}
+
+    .day h3{font-size:1.1rem;font-weight:700}
+
+    .tag{
+      font-size:.7rem;
+      padding:.25rem .65rem;
+      border-radius:999px;
+      background:#0b0f14;
+      color:var(--gold);
+      border:1px solid rgba(201,162,77,.35);
+    }
+
+    .subtitle{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+
+    /* ===== EJERCICIOS ===== */
+    .exercises{
+      overflow:hidden;
+      max-height:0;
+      opacity:0;
+      transition:max-height .4s ease, opacity .25s ease;
+      border-top:1px solid var(--border);
+      margin-top:.6rem;
+      padding-top:.6rem;
+    }
+
     .exercises.open{opacity:1}
 
-    .exercise{display:flex;justify-content:space-between;font-size:.85rem;padding:.4rem 0;gap:.75rem;animation:fadeIn .3s ease}
-    .exercise span:last-child{white-space:nowrap;color:#cbd5f5}
-
-    footer{text-align:center;padding:1rem;color:#94a3b8;font-size:.7rem;background:#020617}
-
-    /* 🎯 MODO GYM */
-    body.gym header,
-    body.gym footer{display:none}
-
-    body.gym section{padding:.55rem;max-width:100%}
-    body.gym .day p{display:none}
-
-    /* En modo gym: ocultamos títulos de sección para limpiar, PERO mantenemos el de progresión */
-    body.gym h2{display:none}
-    body.gym #progresion h2{display:block;text-align:left;font-size:1.05rem;margin:.3rem 0 .6rem}
-
-    /* En modo gym: dejamos todo abierto */
-    body.gym .exercises{max-height:1000px;opacity:1}
-
-    /* 🎨 ANIMACIONES */
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-
-    @media(min-width:768px){
-      header h1{font-size:2.4rem}
-      h2{font-size:1.9rem}
-      .grid{flex-direction:row;flex-wrap:wrap}
-      .day{flex:1 1 220px}
+    .exercise{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:.8rem;
+      padding:.45rem 0;
+      font-size:.9rem;
     }
+
+    .exercise span:last-child{color:var(--muted)}
+
+    /* ===== PROGRESIÓN ===== */
+    #progresion .day{cursor:default}
+
+    /* ===== MODO GYM ===== */
+    body.gym header,body.gym footer{display:none}
+    body.gym section{max-width:100%;padding:.6rem}
+    body.gym h2,body.gym .subtitle{display:none}
+    body.gym .exercises{max-height:1400px;opacity:1}
+
+    .exit-btn{
+      position:fixed;
+      top:12px;
+      left:12px;
+      z-index:9999;
+      background:#0f131a;
+      border:1px solid var(--border);
+      color:var(--text);
+      border-radius:999px;
+      padding:.55rem 1.1rem;
+      font-weight:700;
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+    }
+
+    footer{text-align:center;padding:2rem 1rem 1.4rem;color:var(--muted);font-size:.75rem}
+
+    /* ===== RESPONSIVE ===== */
+    @media(min-width:768px){
+      header h1{font-size:3.1rem}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(min-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
   </style>
 </head>
 <body>
 
-<header id="header">
-  <h1>Rutina de Gimnasio 5 Días</h1>
-  <p>Rutina completa con pesos y progresión para ganar masa muscular de forma sostenible.</p>
-  <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
-    <a href="#rutina" class="cta">Ver rutina</a>
-    <button class="cta" style="background:#38bdf8" onclick="toggleGym(true)">Modo Gym</button>
+<header>
+  <h1><span>Sergio</span> GYM</h1>
+  <p>Rutina profesional de 5 días diseñada para ganar masa muscular con progresión real y uso diario en gimnasio.</p>
+  <div class="actions">
+    <a href="#rutina" class="btn btn-primary">Ver rutina</a>
+    <button class="btn btn-secondary" onclick="toggleGym(true)">Modo Gym</button>
   </div>
 </header>
 
 <section id="rutina">
-  <h2>Distribución semanal (toca cada día)</h2>
+  <h2>Rutina semanal</h2>
   <div class="grid">
 
     <div class="day" onclick="toggle('lunes')">
-      <h3>Lunes – Pecho &amp; Espalda (ligero)</h3>
-      <p>Compatible con fútbol</p>
+      <div class="day-header"><h3>Lunes · Pecho & Espalda</h3><span class="tag">Ligero + fútbol</span></div>
+      <div class="subtitle">Activación sin fatiga</div>
       <div id="lunes" class="exercises">
         <div class="exercise"><span>Press banca</span><span>3×8 · 30–35 kg</span></div>
         <div class="exercise"><span>Press inclinado mancuernas</span><span>2×10 · 14–18 kg</span></div>
@@ -89,8 +209,8 @@
     </div>
 
     <div class="day" onclick="toggle('martes')">
-      <h3>Martes – Pierna (fuerte)</h3>
-      <p>Fuerza y masa</p>
+      <div class="day-header"><h3>Martes · Pierna</h3><span class="tag">Fuerte</span></div>
+      <div class="subtitle">Fuerza y masa</div>
       <div id="martes" class="exercises">
         <div class="exercise"><span>Sentadilla</span><span>4×6–8 · 40–50 kg</span></div>
         <div class="exercise"><span>Prensa</span><span>3×10 · 90–130 kg</span></div>
@@ -101,35 +221,35 @@
     </div>
 
     <div class="day" onclick="toggle('miercoles')">
-      <h3>Miércoles – Pecho &amp; Espalda (fuerte)</h3>
-      <p>Día principal de masa</p>
+      <div class="day-header"><h3>Miércoles · Pecho & Espalda</h3><span class="tag">Fuerte</span></div>
+      <div class="subtitle">Día principal de masa</div>
       <div id="miercoles" class="exercises">
         <div class="exercise"><span>Press banca</span><span>4×5–6 · 35–40 kg</span></div>
         <div class="exercise"><span>Press inclinado</span><span>3×8 · 30–35 kg</span></div>
         <div class="exercise"><span>Aperturas</span><span>3×12 · 10–14 kg</span></div>
-        <div class="exercise"><span>Dominadas/Jalón</span><span>4×6–8 · 40–50 kg</span></div>
+        <div class="exercise"><span>Dominadas / Jalón</span><span>4×6–8 · 40–50 kg</span></div>
         <div class="exercise"><span>Remo máquina</span><span>3×8 · 45–55 kg</span></div>
         <div class="exercise"><span>Remo mancuerna</span><span>2×10 · 18–22 kg</span></div>
       </div>
     </div>
 
     <div class="day" onclick="toggle('jueves')">
-      <h3>Jueves – Hombro &amp; Brazos</h3>
-      <p>Soporte y estética</p>
+      <div class="day-header"><h3>Jueves · Hombro & Brazos</h3><span class="tag">Estética</span></div>
+      <div class="subtitle">Soporte y detalle</div>
       <div id="jueves" class="exercises">
         <div class="exercise"><span>Press militar</span><span>4×6–8 · 20–25 kg</span></div>
-        <div class="exercise"><span>Laterales</span><span>4×12–15 · 6–8 kg</span></div>
+        <div class="exercise"><span>Elevaciones laterales</span><span>4×12–15 · 6–8 kg</span></div>
         <div class="exercise"><span>Pájaros</span><span>3×15 · 4–8 kg</span></div>
         <div class="exercise"><span>Curl EZ</span><span>3×10 · 20–25 kg</span></div>
         <div class="exercise"><span>Curl alterno</span><span>2×12 · 8–12 kg</span></div>
-        <div class="exercise"><span>Fondos asistidos</span><span>3×8–10 · 20–40 kg asis.</span></div>
+        <div class="exercise"><span>Fondos asistidos</span><span>3×8–10 · 20–40 kg</span></div>
         <div class="exercise"><span>Tríceps polea</span><span>2×12 · 25–35 kg</span></div>
       </div>
     </div>
 
     <div class="day" onclick="toggle('viernes')">
-      <h3>Viernes – Pierna (ligera) + Core</h3>
-      <p>Refuerzo y recuperación</p>
+      <div class="day-header"><h3>Viernes · Pierna + Core</h3><span class="tag">Ligero</span></div>
+      <div class="subtitle">Refuerzo y recuperación</div>
       <div id="viernes" class="exercises">
         <div class="exercise"><span>Zancadas</span><span>3×10 · 10–16 kg</span></div>
         <div class="exercise"><span>Hip thrust</span><span>3×8–10 · 50–70 kg</span></div>
@@ -143,95 +263,52 @@
 </section>
 
 <section id="progresion">
-  <h2>🧠 Cómo progresar (léelo una vez)</h2>
-  <div class="day" style="cursor:default">
-    <div id="progList" class="exercises open">
-      <div class="exercise"><span>1️⃣ Elige bien el peso</span><span>Empieza en el mínimo del rango si dudas</span></div>
-      <div class="exercise"><span>2️⃣ Prioriza repeticiones</span><span>Sube reps antes de subir kg</span></div>
-      <div class="exercise"><span>3️⃣ Cuándo subir peso</span><span>Completa el máximo del rango en todas las series</span></div>
-      <div class="exercise"><span>4️⃣ Cuánto subir</span><span>Barra +2–2,5 kg · Mancuerna +1–2 kg · Máquina +5 kg</span></div>
-      <div class="exercise"><span>5️⃣ RIR</span><span>Termina con 1–2 reps en recámara</span></div>
-      <div class="exercise"><span>6️⃣ Si te estancas</span><span>Mantén peso o baja 1 serie, no fuerces</span></div>
-      <div class="exercise"><span>7️⃣ Regla clave</span><span>Técnica limpia &gt; peso</span></div>
+  <h2>🧠 Cómo progresar</h2>
+  <div class="day">
+    <div class="exercises open">
+      <div class="exercise"><span>Prioriza repeticiones</span><span>Sube reps antes de peso</span></div>
+      <div class="exercise"><span>Sube peso</span><span>Al completar el rango</span></div>
+      <div class="exercise"><span>Incrementos</span><span>Barra +2–2,5 kg · Mancuerna +1–2 kg</span></div>
+      <div class="exercise"><span>RIR</span><span>1–2 reps en recámara</span></div>
+      <div class="exercise"><span>Regla</span><span>Técnica limpia &gt; ego</span></div>
     </div>
   </div>
 </section>
 
-<footer>
-  © 2025 · Sergio GYM · Rutina diseñada para progresar de verdad
-</footer>
+<footer>© 2025 · Sergio GYM · Diseño profesional de entrenamiento</footer>
 
 <script>
-  // Abre el acordeón del bloque de progresión desde el inicio
-  window.addEventListener('DOMContentLoaded', () => {
-    const prog = document.getElementById('progList')
-    if (prog) {
-      prog.style.maxHeight = prog.scrollHeight + 'px'
-      prog.classList.add('open')
-    }
-  })
-
   function toggle(id){
-    const el = document.getElementById(id)
+    const el=document.getElementById(id)
     if(!el) return
-
-    const isOpen = el.classList.contains('open')
-    if(isOpen){
-      el.style.maxHeight = null
-      el.classList.remove('open')
-    } else {
-      el.style.maxHeight = el.scrollHeight + 'px'
-      el.classList.add('open')
-    }
+    const open=el.classList.contains('open')
+    if(open){el.style.maxHeight=null;el.classList.remove('open')}
+    else{el.style.maxHeight=el.scrollHeight+'px';el.classList.add('open')}
   }
 
   function toggleGym(on){
-    const body = document.body
-
+    const body=document.body
     if(on){
       body.classList.add('gym')
-
-      // Botón flotante para volver
       if(!document.getElementById('exitGym')){
-        const btn = document.createElement('button')
-        btn.id = 'exitGym'
-        btn.innerText = '⬅️ Inicio'
-        btn.className = 'cta'
-        btn.style.position = 'fixed'
-        btn.style.top = '10px'
-        btn.style.left = '10px'
-        btn.style.zIndex = '9999'
-        btn.style.background = '#38bdf8'
-        btn.onclick = ()=>toggleGym(false)
-        document.body.appendChild(btn)
+        const b=document.createElement('button')
+        b.id='exitGym'
+        b.className='exit-btn'
+        b.textContent='⬅️ Inicio'
+        b.onclick=()=>toggleGym(false)
+        document.body.appendChild(b)
       }
-
-      // Abrir todos los días (solo rutina)
-      document.querySelectorAll('#rutina .exercises').forEach(e=>{
-        e.style.maxHeight = e.scrollHeight + 'px'
+      document.querySelectorAll('.exercises').forEach(e=>{
+        e.style.maxHeight=e.scrollHeight+'px'
         e.classList.add('open')
       })
-
-      // Asegurar que progresión también se vea abierta
-      const prog = document.getElementById('progList')
-      if (prog) {
-        prog.style.maxHeight = prog.scrollHeight + 'px'
-        prog.classList.add('open')
-      }
-
-      window.scrollTo({top:0,behavior:'smooth'})
-    } else {
+    }else{
       body.classList.remove('gym')
-      const btn = document.getElementById('exitGym')
-      if(btn) btn.remove()
+      const b=document.getElementById('exitGym')
+      if(b) b.remove()
       window.scrollTo({top:0,behavior:'smooth'})
     }
   }
-
-  // --- Mini "tests" manuales (abre consola) ---
-  // toggle('lunes') debería abrir/cerrar sin errores
-  // toggleGym(true) debería activar modo gym + botón Inicio
-  // toggleGym(false) debería volver a la vista normal
 </script>
 
 </body>
