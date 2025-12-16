@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutina 5 Días – Ganar Masa Muscular</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+    body{background:#0f172a;color:#e5e7eb;line-height:1.5;padding:0;margin:0}
+
+    header{padding:2.5rem 1rem;text-align:center;background:linear-gradient(135deg,#1e293b,#020617);position:sticky;top:0;z-index:10}
+    header h1{font-size:2rem;margin-bottom:.5rem;animation:fadeDown .6s ease}
+    header p{font-size:.95rem;max-width:520px;margin:0 auto 1.2rem;color:#cbd5f5;animation:fadeDown .8s ease}
+
+    .cta{background:#22c55e;color:#022c22;padding:.7rem 1.4rem;border-radius:999px;font-weight:700;display:inline-block;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+    .cta:active{transform:scale(.96)}
+
+    section{padding:1rem;max-width:100%;margin:0 auto}
+    h2{font-size:1.4rem;margin-bottom:1rem;text-align:center;animation:fadeIn .5s ease}
+
+    .grid{display:flex;flex-direction:column;gap:.8rem}
+
+    .day{background:#020617;border-radius:14px;padding:1rem;box-shadow:0 6px 16px rgba(0,0,0,.35);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+    .day:active{transform:scale(.985)}
+
+    .day h3{font-size:1.05rem;color:#22c55e}
+    .day p{font-size:.8rem;color:#cbd5f5;margin-bottom:.4rem}
+
+    .exercises{overflow:hidden;max-height:0;transition:max-height .35s ease, opacity .25s ease;opacity:0}
+    .exercises.open{opacity:1}
+
+    .exercise{display:flex;justify-content:space-between;font-size:.85rem;padding:.4rem 0;gap:.75rem;animation:fadeIn .3s ease}
+    .exercise span:last-child{white-space:nowrap;color:#cbd5f5}
+
+    footer{text-align:center;padding:1rem;color:#94a3b8;font-size:.7rem;background:#020617}
+
+    /* 🎯 MODO GYM */
+    body.gym header,
+    body.gym footer,
+    body.gym #progresion{display:none}
+
+    body.gym section{padding:.4rem}
+    body.gym h2{display:none}
+    body.gym .day p{display:none}
+    body.gym .exercises{max-height:1000px;opacity:1}
+
+    /* 🎨 ANIMACIONES */
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(min-width:768px){header h1{font-size:2.4rem}h2{font-size:1.9rem}.grid{flex-direction:row;flex-wrap:wrap}.day{flex:1 1 220px}}
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <h1>Rutina de Gimnasio 5 Días</h1>
+  <p>Rutina completa con pesos y progresión para ganar masa muscular de forma sostenible.</p>
+  <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
+    <a href="#rutina" class="cta">Ver rutina</a>
+    <button class="cta" style="background:#38bdf8" onclick="toggleGym()">Modo Gym</button>
+  </div>
+</header>
+
+<section id="rutina">
+  <h2>Distribución semanal (toca cada día)</h2>
+  <div class="grid">
+
+    <div class="day" onclick="toggle('lunes')">
+      <h3>Lunes – Pecho & Espalda (ligero)</h3>
+      <p>Compatible con fútbol</p>
+      <div id="lunes" class="exercises">
+        <div class="exercise"><span>Press banca</span><span>3×8 · 30–35 kg</span></div>
+        <div class="exercise"><span>Press inclinado mancuernas</span><span>2×10 · 14–18 kg</span></div>
+        <div class="exercise"><span>Jalón al pecho</span><span>3×10 · 35–45 kg</span></div>
+        <div class="exercise"><span>Remo máquina</span><span>2×12 · 40–50 kg</span></div>
+        <div class="exercise"><span>Face pull</span><span>2×15 · 20–30 kg</span></div>
+      </div>
+    </div>
+
+    <div class="day" onclick="toggle('martes')">
+      <h3>Martes – Pierna (fuerte)</h3>
+      <p>Fuerza y masa</p>
+      <div id="martes" class="exercises">
+        <div class="exercise"><span>Sentadilla</span><span>4×6–8 · 40–50 kg</span></div>
+        <div class="exercise"><span>Prensa</span><span>3×10 · 90–130 kg</span></div>
+        <div class="exercise"><span>PM rumano</span><span>3×8–10 · 40–50 kg</span></div>
+        <div class="exercise"><span>Curl femoral</span><span>3×10–12 · 30–40 kg</span></div>
+        <div class="exercise"><span>Gemelos</span><span>4×12–15 · 60–90 kg</span></div>
+      </div>
+    </div>
+
+    <div class="day" onclick="toggle('miercoles')">
+      <h3>Miércoles – Pecho & Espalda (fuerte)</h3>
+      <p>Día principal de masa</p>
+      <div id="miercoles" class="exercises">
+        <div class="exercise"><span>Press banca</span><span>4×5–6 · 35–40 kg</span></div>
+        <div class="exercise"><span>Press inclinado</span><span>3×8 · 30–35 kg</span></div>
+        <div class="exercise"><span>Aperturas</span><span>3×12 · 10–14 kg</span></div>
+        <div class="exercise"><span>Dominadas/Jalón</span><span>4×6–8 · 40–50 kg</span></div>
+        <div class="exercise"><span>Remo máquina</span><span>3×8 · 45–55 kg</span></div>
+        <div class="exercise"><span>Remo mancuerna</span><span>2×10 · 18–22 kg</span></div>
+      </div>
+    </div>
+
+    <div class="day" onclick="toggle('jueves')">
+      <h3>Jueves – Hombro & Brazos</h3>
+      <p>Soporte y estética</p>
+      <div id="jueves" class="exercises">
+        <div class="exercise"><span>Press militar</span><span>4×6–8 · 20–25 kg</span></div>
+        <div class="exercise"><span>Laterales</span><span>4×12–15 · 6–8 kg</span></div>
+        <div class="exercise"><span>Pájaros</span><span>3×15 · 4–8 kg</span></div>
+        <div class="exercise"><span>Curl EZ</span><span>3×10 · 20–25 kg</span></div>
+        <div class="exercise"><span>Curl alterno</span><span>2×12 · 8–12 kg</span></div>
+        <div class="exercise"><span>Fondos asistidos</span><span>3×8–10 · 20–40 kg asis.</span></div>
+        <div class="exercise"><span>Tríceps polea</span><span>2×12 · 25–35 kg</span></div>
+      </div>
+    </div>
+
+    <div class="day" onclick="toggle('viernes')">
+      <h3>Viernes – Pierna (ligera) + Core</h3>
+      <p>Refuerzo y recuperación</p>
+      <div id="viernes" class="exercises">
+        <div class="exercise"><span>Zancadas</span><span>3×10 · 10–16 kg</span></div>
+        <div class="exercise"><span>Hip thrust</span><span>3×8–10 · 50–70 kg</span></div>
+        <div class="exercise"><span>Extensión cuádriceps</span><span>3×12 · 30–40 kg</span></div>
+        <div class="exercise"><span>Curl femoral</span><span>2×12 · 25–35 kg</span></div>
+        <div class="exercise"><span>Plancha</span><span>3×30–45 s</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="progresion">
+  <h2>🧠 Cómo progresar (léelo una vez)</h2>
+  <div class="day" style="cursor:default">
+    <div class="exercises" style="display:block">
+      <div class="exercise"><span>1️⃣ Elige bien el peso</span><span>Empieza en el mínimo del rango si dudas</span></div>
+      <div class="exercise"><span>2️⃣ Prioriza repeticiones</span><span>Sube reps antes de subir kg</span></div>
+      <div class="exercise"><span>3️⃣ Cuándo subir peso</span><span>Al completar el máximo del rango en todas las series</span></div>
+      <div class="exercise"><span>4️⃣ Cuánto subir</span><span>Barra +2–2,5 kg · Mancuerna +1–2 kg · Máquina +5 kg</span></div>
+      <div class="exercise"><span>5️⃣ RIR</span><span>Termina con 1–2 reps en recámara</span></div>
+      <div class="exercise"><span>6️⃣ Si te estancas</span><span>Mantén peso o baja 1 serie, no fuerces</span></div>
+      <div class="exercise"><span>7️⃣ Regla clave</span><span>Técnica limpia &gt; peso</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 · Sergio GYM · Rutina diseñada para progresar de verdad
+</footer>
+
+<script>
+  function toggle(id){
+    const el = document.getElementById(id)
+    const isOpen = el.classList.contains('open')
+
+    if(isOpen){
+      el.style.maxHeight = null
+      el.classList.remove('open')
+    } else {
+      el.style.maxHeight = el.scrollHeight + 'px'
+      el.classList.add('open')
+    }
+  }
+
+  function toggleGym(){
+    document.body.classList.toggle('gym')
+    document.querySelectorAll('.exercises').forEach(e=>{
+      e.style.maxHeight='1000px'
+      e.classList.add('open')
+    })
+  }
+</script>
+
+</body>
+</html>
